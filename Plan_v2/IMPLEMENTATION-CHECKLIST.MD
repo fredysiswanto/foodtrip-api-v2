@@ -2,6 +2,8 @@
 
 Complete phased roadmap incorporating all v2.1 improvements. Organized by phase with clear dependencies and milestones.
 
+**📖 For detailed Phase 1 breakdown with configuration examples and rationale, see [PHASE-1-OVERVIEW.MD](./PHASE-1-OVERVIEW.MD)**
+
 ---
 
 # Phase 1: Project Setup & Infrastructure

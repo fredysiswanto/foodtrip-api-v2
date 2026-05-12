@@ -37,13 +37,13 @@ Phase 1 establishes the foundational infrastructure for FoodTrip API v2.1. This 
 
 **Objective:** Create project structure and package configuration
 
-| Task | Details | Depends On |
-|------|---------|-----------|
-| Create project directory | `foodtrip-api-v2` root folder | None |
-| Initialize pnpm workspace | `pnpm init`, configure `pnpm-workspace.yaml` | Directory created |
-| Create directory structure | `src/`, `tests/`, `migrations/`, `seeders/`, `dist/`, `.github/` | pnpm init |
-| Configure TypeScript | Create `tsconfig.json` with strict mode, path aliases | Directory structure |
-| Setup path aliases | `@src`, `@modules`, `@shared`, `@config` in tsconfig | tsconfig.json |
+| Task                       | Details                                                          | Depends On          |
+| -------------------------- | ---------------------------------------------------------------- | ------------------- |
+| Create project directory   | `foodtrip-api-v2` root folder                                    | None                |
+| Initialize pnpm workspace  | `pnpm init`, configure `pnpm-workspace.yaml`                     | Directory created   |
+| Create directory structure | `src/`, `tests/`, `migrations/`, `seeders/`, `dist/`, `.github/` | pnpm init           |
+| Configure TypeScript       | Create `tsconfig.json` with strict mode, path aliases            | Directory structure |
+| Setup path aliases         | `@src`, `@modules`, `@shared`, `@config` in tsconfig             | tsconfig.json       |
 
 **Directory Structure Output:**
 
@@ -100,6 +100,7 @@ pnpm add express@^4.18.0
 ```
 
 **Packages:**
+
 - `express` — HTTP server framework
 - `dotenv` — Environment configuration loader
 
@@ -110,6 +111,7 @@ pnpm add sequelize@^6.35.0 pg@^8.11.0 mysql2@^3.6.0 sqlite3@^5.1.6
 ```
 
 **Packages:**
+
 - `sequelize` — ORM for SQL databases
 - `pg` — PostgreSQL driver
 - `mysql2` — MySQL driver
@@ -122,6 +124,7 @@ pnpm add jsonwebtoken@^9.1.0 bcryptjs@^2.4.3 helmet@^7.0.0 cors@^2.8.5 express-r
 ```
 
 **Packages:**
+
 - `jsonwebtoken` — JWT token signing & verification
 - `bcryptjs` — Password hashing
 - `helmet` — HTTP security headers
@@ -135,6 +138,7 @@ pnpm add zod@^3.22.0
 ```
 
 **Packages:**
+
 - `zod` — TypeScript-first schema validation
 
 #### File Upload & Processing
@@ -144,6 +148,7 @@ pnpm add multer@^1.4.5 sharp@^0.32.0 uuid@^9.0.0
 ```
 
 **Packages:**
+
 - `multer` — Multipart form data handling
 - `sharp` — Image processing & resizing
 - `uuid` — UUID v4 generation
@@ -155,6 +160,7 @@ pnpm add winston@^3.11.0 lodash@^4.17.21
 ```
 
 **Packages:**
+
 - `winston` — Logging library
 - `lodash` — Utility functions
 
@@ -165,6 +171,7 @@ pnpm add -D jest@^29.7.0 @types/jest@^29.5.0 supertest@^6.3.0 @types/node@^20.0.
 ```
 
 **Packages:**
+
 - `jest` — Testing framework
 - `supertest` — HTTP assertion library
 - `@types/*` — TypeScript definitions
@@ -176,6 +183,7 @@ pnpm add -D typescript@^5.2.0 ts-node@^10.9.0 nodemon@^3.0.0 tsconfig-paths@^4.2
 ```
 
 **Packages:**
+
 - `typescript` — TypeScript compiler
 - `ts-node` — TypeScript execution
 - `nodemon` — Auto-reload on file changes
@@ -188,6 +196,7 @@ pnpm add -D eslint@^8.50.0 @typescript-eslint/eslint-plugin@^6.0.0 @typescript-e
 ```
 
 **Packages:**
+
 - `eslint` — Code linting
 - `@typescript-eslint/*` — TypeScript linting rules
 - `prettier` — Code formatting
@@ -200,6 +209,7 @@ pnpm add -D husky@^8.0.0 lint-staged@^15.0.0
 ```
 
 **Packages:**
+
 - `husky` — Git hooks manager
 - `lint-staged` — Run tasks on staged files
 
@@ -359,7 +369,10 @@ LOG_LEVEL=debug
   "rules": {
     "@typescript-eslint/no-explicit-any": "error",
     "@typescript-eslint/explicit-function-return-types": "warn",
-    "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      { "argsIgnorePattern": "^_" }
+    ],
     "no-console": ["warn", { "allow": ["warn", "error"] }],
     "max-len": ["warn", { "code": 120 }]
   }
@@ -488,22 +501,22 @@ Thumbs.db
 
 **Script Responsibilities:**
 
-| Script | Purpose | Used By |
-|--------|---------|---------|
-| `pnpm dev` | Start development server with auto-reload | Developers |
-| `pnpm build` | Compile TypeScript to JavaScript | CI/CD, production |
-| `pnpm start` | Run compiled production build | Docker, production |
-| `pnpm lint` | Check code quality issues | Pre-commit, CI |
-| `pnpm lint:fix` | Auto-fix linting issues | Development |
-| `pnpm format` | Auto-format code with Prettier | Development |
-| `pnpm format:check` | Check if code needs formatting | CI |
-| `pnpm test` | Run all tests once | CI, pre-commit |
-| `pnpm test:watch` | Run tests in watch mode | Development |
-| `pnpm test:coverage` | Generate coverage report | CI, metrics |
-| `pnpm db:migrate` | Run pending database migrations | Deployment |
-| `pnpm db:migrate:undo` | Rollback last migration | Development |
-| `pnpm db:seed` | Seed database with sample data | Development setup |
-| `pnpm db:seed:undo` | Clear seeded data | Development |
+| Script                 | Purpose                                   | Used By            |
+| ---------------------- | ----------------------------------------- | ------------------ |
+| `pnpm dev`             | Start development server with auto-reload | Developers         |
+| `pnpm build`           | Compile TypeScript to JavaScript          | CI/CD, production  |
+| `pnpm start`           | Run compiled production build             | Docker, production |
+| `pnpm lint`            | Check code quality issues                 | Pre-commit, CI     |
+| `pnpm lint:fix`        | Auto-fix linting issues                   | Development        |
+| `pnpm format`          | Auto-format code with Prettier            | Development        |
+| `pnpm format:check`    | Check if code needs formatting            | CI                 |
+| `pnpm test`            | Run all tests once                        | CI, pre-commit     |
+| `pnpm test:watch`      | Run tests in watch mode                   | Development        |
+| `pnpm test:coverage`   | Generate coverage report                  | CI, metrics        |
+| `pnpm db:migrate`      | Run pending database migrations           | Deployment         |
+| `pnpm db:migrate:undo` | Rollback last migration                   | Development        |
+| `pnpm db:seed`         | Seed database with sample data            | Development setup  |
+| `pnpm db:seed:undo`    | Clear seeded data                         | Development        |
 
 ---
 
@@ -514,22 +527,24 @@ Thumbs.db
 **File:** `src/config/index.ts`
 
 ```typescript
-import dotenv from 'dotenv';
-import path from 'path';
+import dotenv from "dotenv";
+import path from "path";
 
 // Load .env file based on NODE_ENV
-const envFile = process.env.NODE_ENV ? `.env.${process.env.NODE_ENV}` : '.env.development';
+const envFile = process.env.NODE_ENV
+  ? `.env.${process.env.NODE_ENV}`
+  : ".env.development";
 dotenv.config({ path: path.resolve(process.cwd(), envFile) });
 
 export interface AppConfig {
-  nodeEnv: 'development' | 'staging' | 'production';
+  nodeEnv: "development" | "staging" | "production";
   port: number;
   appName: string;
   appUrl: string;
 }
 
 export interface DatabaseConfig {
-  dialect: 'sqlite' | 'mysql' | 'postgres';
+  dialect: "sqlite" | "mysql" | "postgres";
   host?: string;
   port?: number;
   username?: string;
@@ -565,8 +580,8 @@ export interface FileUploadConfig {
 }
 
 export interface LoggingConfig {
-  level: 'debug' | 'info' | 'warn' | 'error';
-  format: 'json' | 'simple';
+  level: "debug" | "info" | "warn" | "error";
+  format: "json" | "simple";
 }
 
 /**
@@ -575,30 +590,32 @@ export interface LoggingConfig {
  */
 function validateConfig(): void {
   const required = [
-    'NODE_ENV',
-    'PORT',
-    'JWT_SECRET',
-    'JWT_REFRESH_SECRET',
-    'DB_DIALECT',
+    "NODE_ENV",
+    "PORT",
+    "JWT_SECRET",
+    "JWT_REFRESH_SECRET",
+    "DB_DIALECT",
   ];
 
   const missing = required.filter((key) => !process.env[key]);
   if (missing.length > 0) {
-    throw new Error(`Missing required environment variables: ${missing.join(', ')}`);
+    throw new Error(
+      `Missing required environment variables: ${missing.join(", ")}`,
+    );
   }
 }
 
 validateConfig();
 
 export const appConfig: AppConfig = {
-  nodeEnv: (process.env.NODE_ENV as any) || 'development',
-  port: parseInt(process.env.PORT || '3000', 10),
-  appName: process.env.APP_NAME || 'FoodTrip API',
-  appUrl: process.env.APP_URL || 'http://localhost:3000',
+  nodeEnv: (process.env.NODE_ENV as any) || "development",
+  port: parseInt(process.env.PORT || "3000", 10),
+  appName: process.env.APP_NAME || "FoodTrip API",
+  appUrl: process.env.APP_URL || "http://localhost:3000",
 };
 
 export const databaseConfig: DatabaseConfig = {
-  dialect: (process.env.DB_DIALECT as any) || 'sqlite',
+  dialect: (process.env.DB_DIALECT as any) || "sqlite",
   host: process.env.DB_HOST,
   port: process.env.DB_PORT ? parseInt(process.env.DB_PORT, 10) : undefined,
   username: process.env.DB_USER,
@@ -615,32 +632,34 @@ export const databaseConfig: DatabaseConfig = {
 
 export const jwtConfig: JwtConfig = {
   secret: process.env.JWT_SECRET!,
-  expiry: process.env.JWT_EXPIRY || '15m',
+  expiry: process.env.JWT_EXPIRY || "15m",
   refreshSecret: process.env.JWT_REFRESH_SECRET!,
-  refreshExpiry: process.env.JWT_REFRESH_EXPIRY || '7d',
+  refreshExpiry: process.env.JWT_REFRESH_EXPIRY || "7d",
 };
 
 export const securityConfig: SecurityConfig = {
-  bcryptRounds: parseInt(process.env.BCRYPT_ROUNDS || '10', 10),
-  corsOrigin: (process.env.CORS_ORIGIN || 'http://localhost:3000').split(','),
-  corsCredentials: process.env.CORS_CREDENTIALS !== 'false',
+  bcryptRounds: parseInt(process.env.BCRYPT_ROUNDS || "10", 10),
+  corsOrigin: (process.env.CORS_ORIGIN || "http://localhost:3000").split(","),
+  corsCredentials: process.env.CORS_CREDENTIALS !== "false",
 };
 
 export const rateLimitConfig: RateLimitConfig = {
-  windowMs: parseInt(process.env.RATE_LIMIT_WINDOW_MS || '900000', 10),
-  maxRequests: parseInt(process.env.RATE_LIMIT_MAX_REQUESTS || '100', 10),
-  authMaxRequests: parseInt(process.env.RATE_LIMIT_AUTH_MAX || '20', 10),
+  windowMs: parseInt(process.env.RATE_LIMIT_WINDOW_MS || "900000", 10),
+  maxRequests: parseInt(process.env.RATE_LIMIT_MAX_REQUESTS || "100", 10),
+  authMaxRequests: parseInt(process.env.RATE_LIMIT_AUTH_MAX || "20", 10),
 };
 
 export const fileUploadConfig: FileUploadConfig = {
-  maxSize: parseInt(process.env.UPLOAD_MAX_SIZE || '5242880', 10),
-  uploadDir: process.env.UPLOAD_DIR || './uploads',
-  allowedMimeTypes: (process.env.ALLOWED_MIME_TYPES || 'image/jpeg,image/png,image/webp').split(','),
+  maxSize: parseInt(process.env.UPLOAD_MAX_SIZE || "5242880", 10),
+  uploadDir: process.env.UPLOAD_DIR || "./uploads",
+  allowedMimeTypes: (
+    process.env.ALLOWED_MIME_TYPES || "image/jpeg,image/png,image/webp"
+  ).split(","),
 };
 
 export const loggingConfig: LoggingConfig = {
-  level: (process.env.LOG_LEVEL as any) || 'debug',
-  format: (process.env.LOG_FORMAT as any) || 'json',
+  level: (process.env.LOG_LEVEL as any) || "debug",
+  format: (process.env.LOG_FORMAT as any) || "json",
 };
 
 export default {
@@ -663,29 +682,29 @@ export default {
 **File:** `src/shared/utils/logger.ts`
 
 ```typescript
-import winston from 'winston';
-import { loggingConfig } from '@config/index';
+import winston from "winston";
+import { loggingConfig } from "@config/index";
 
 const logger = winston.createLogger({
   level: loggingConfig.level,
   format:
-    loggingConfig.format === 'json'
+    loggingConfig.format === "json"
       ? winston.format.combine(
           winston.format.timestamp(),
           winston.format.errors({ stack: true }),
-          winston.format.json()
+          winston.format.json(),
         )
       : winston.format.combine(
           winston.format.timestamp(),
           winston.format.errors({ stack: true }),
           winston.format.printf(({ timestamp, level, message, ...meta }) => {
-            return `${timestamp} [${level.toUpperCase()}] ${message} ${Object.keys(meta).length ? JSON.stringify(meta) : ''}`;
-          })
+            return `${timestamp} [${level.toUpperCase()}] ${message} ${Object.keys(meta).length ? JSON.stringify(meta) : ""}`;
+          }),
         ),
   transports: [
     new winston.transports.Console(),
-    new winston.transports.File({ filename: 'logs/error.log', level: 'error' }),
-    new winston.transports.File({ filename: 'logs/combined.log' }),
+    new winston.transports.File({ filename: "logs/error.log", level: "error" }),
+    new winston.transports.File({ filename: "logs/combined.log" }),
   ],
 });
 
@@ -779,13 +798,13 @@ Before moving to Phase 2, verify:
 
 ## ⚠️ Known Risks & Considerations
 
-| Risk | Probability | Mitigation |
-|------|-------------|-----------|
-| TypeScript strict mode prevents development velocity | Low | Use `// @ts-ignore` sparingly; breaks are acceptable during setup |
-| Database dialect not installed | Medium | Ensure all drivers installed: sqlite3, pg, mysql2 |
-| Path aliases not resolving at runtime | Medium | Install `tsconfig-paths` and load in entry point |
-| Environment variables missing | High | Validate on startup; provide clear error messages |
-| Husky/pre-commit hooks slow down commits | Low | Setup is one-time; can be bypassed with `--no-verify` if needed |
+| Risk                                                 | Probability | Mitigation                                                        |
+| ---------------------------------------------------- | ----------- | ----------------------------------------------------------------- |
+| TypeScript strict mode prevents development velocity | Low         | Use `// @ts-ignore` sparingly; breaks are acceptable during setup |
+| Database dialect not installed                       | Medium      | Ensure all drivers installed: sqlite3, pg, mysql2                 |
+| Path aliases not resolving at runtime                | Medium      | Install `tsconfig-paths` and load in entry point                  |
+| Environment variables missing                        | High        | Validate on startup; provide clear error messages                 |
+| Husky/pre-commit hooks slow down commits             | Low         | Setup is one-time; can be bypassed with `--no-verify` if needed   |
 
 ---
 
