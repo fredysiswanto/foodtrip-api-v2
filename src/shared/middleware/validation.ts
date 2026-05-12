@@ -6,13 +6,10 @@ import { zodErrorsToDetails } from '@shared/utils/validationHelper';
 /**
  * Request validation middleware using Zod
  */
-export function validate(
-  schema: ZodSchema,
-  source: 'body' | 'params' | 'query' = 'body'
-) {
-  return (req: Request, res: Response, next: NextFunction): void => {
+export function validate(schema: ZodSchema, source: 'body' | 'params' | 'query' = 'body') {
+  return (req: Request, _res: Response, next: NextFunction): void => {
     try {
-      const data = req[source];
+      const data = req[source as keyof Request];
       schema.parse(data);
       next();
     } catch (error) {
@@ -20,6 +17,7 @@ export function validate(
         const errors = zodErrorsToDetails(error);
         const validationError = new ValidationError('Validation failed');
         // Attach errors for error handler middleware
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (validationError as any).details = errors;
         next(validationError);
         return;

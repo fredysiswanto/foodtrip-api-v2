@@ -1,3 +1,4 @@
+// @ts-expect-error - uuid has built-in types
 import { v4 as uuidv4 } from 'uuid';
 
 /**

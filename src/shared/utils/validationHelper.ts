@@ -44,10 +44,7 @@ export class ValidationErrorAggregator {
  */
 export function zodErrorsToDetails(error: ZodError): ErrorDetail[] {
   return error.errors.map((err) => ({
-    code:
-      err.code === 'invalid_type'
-        ? 'INVALID_REQUEST'
-        : 'INVALID_ENUM',
+    code: err.code === 'invalid_type' ? 'INVALID_REQUEST' : 'INVALID_ENUM',
     field: err.path.join('.'),
     message: err.message,
   }));

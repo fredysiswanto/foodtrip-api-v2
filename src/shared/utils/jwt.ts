@@ -23,9 +23,11 @@ export const jwtHelper = {
    * Sign JWT token
    */
   sign(payload: Omit<JWTPayload, 'iat' | 'exp'>): string {
-    return jwt.sign(payload, jwtConfig.secret, {
-      expiresIn: jwtConfig.accessTokenExpiry,
-    });
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const options: any = {
+      expiresIn: jwtConfig.expiry,
+    };
+    return jwt.sign(payload, jwtConfig.secret, options);
   },
 
   /**

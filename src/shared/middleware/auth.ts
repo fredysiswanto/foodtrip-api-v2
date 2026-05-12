@@ -8,7 +8,8 @@ import { jwtHelper, JWTPayload } from '@shared/utils/jwt';
  */
 export function authenticateJWT(
   req: Request & { user?: JWTPayload },
-  res: Response,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  _res: Response,
   next: NextFunction
 ): void {
   try {

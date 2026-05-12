@@ -1,5 +1,4 @@
 import { Sequelize, QueryTypes, Transaction } from 'sequelize';
-import { InsufficientStockError } from '@shared/errors';
 
 /**
  * Stock management utilities
@@ -20,7 +19,7 @@ export const stockHelper = {
     quantity: number,
     transaction: Transaction
   ): Promise<boolean> {
-    const [affectedRows] = await sequelize.query(
+    const result = await sequelize.query(
       `UPDATE dishes 
        SET stock = stock - :quantity, version = version + 1 
        WHERE id = :dishId AND stock >= :quantity`,
@@ -31,6 +30,12 @@ export const stockHelper = {
       }
     );
 
+    const affectedRows =
+      result && typeof result === 'object' && 'affectedRows' in result
+        ? ((result as Record<string, unknown>).affectedRows as number)
+        : Array.isArray(result)
+          ? ((result as unknown[])[0] as unknown as number)
+          : 0;
     return affectedRows > 0;
   },
 
@@ -63,13 +68,10 @@ export const stockHelper = {
     dishId: string,
     requiredQuantity: number
   ): Promise<{ available: number; isSufficient: boolean }> {
-    const result = await sequelize.query(
-      'SELECT stock FROM dishes WHERE id = :dishId',
-      {
-        replacements: { dishId },
-        type: QueryTypes.SELECT,
-      }
-    );
+    const result = await sequelize.query('SELECT stock FROM dishes WHERE id = :dishId', {
+      replacements: { dishId },
+      type: QueryTypes.SELECT,
+    });
 
     const row = (result[0] as { stock: number } | undefined) ?? { stock: 0 };
     return {

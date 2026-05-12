@@ -7,11 +7,7 @@ import { RoleType, ROLE_HIERARCHY } from '@shared/constants/roles';
  * Role-based authorization middleware
  */
 export function requireRole(allowedRoles: RoleType[]) {
-  return (
-    req: Request & { user?: JWTPayload },
-    res: Response,
-    next: NextFunction
-  ): void => {
+  return (req: Request & { user?: JWTPayload }, _res: Response, next: NextFunction): void => {
     try {
       if (!req.user) {
         throw new ForbiddenError('Insufficient permissions', 'INSUFFICIENT_PERMISSIONS');
@@ -33,11 +29,7 @@ export function requireRole(allowedRoles: RoleType[]) {
  * Check resource ownership
  */
 export function requireOwnership(resourceField: string) {
-  return (
-    req: Request & { user?: JWTPayload },
-    res: Response,
-    next: NextFunction
-  ): void => {
+  return (req: Request & { user?: JWTPayload }, _res: Response, next: NextFunction): void => {
     try {
       if (!req.user) {
         throw new ForbiddenError('Insufficient permissions', 'INSUFFICIENT_PERMISSIONS');
@@ -59,11 +51,7 @@ export function requireOwnership(resourceField: string) {
  * Check if user role has minimum required level
  */
 export function requireMinimumRole(minimumRole: RoleType) {
-  return (
-    req: Request & { user?: JWTPayload },
-    res: Response,
-    next: NextFunction
-  ): void => {
+  return (req: Request & { user?: JWTPayload }, _res: Response, next: NextFunction): void => {
     try {
       if (!req.user) {
         throw new ForbiddenError('Insufficient permissions', 'INSUFFICIENT_PERMISSIONS');

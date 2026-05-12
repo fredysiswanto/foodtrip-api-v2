@@ -1,5 +1,6 @@
+// @ts-expect-error - bcryptjs has built-in types
 import bcrypt from 'bcryptjs';
-import { appConfig } from '@config/index';
+import { securityConfig } from '@config/index';
 
 /**
  * Bcrypt password hashing utilities
@@ -9,7 +10,7 @@ export const bcryptHelper = {
    * Hash password
    */
   async hash(password: string): Promise<string> {
-    return bcrypt.hash(password, appConfig.bcryptRounds);
+    return bcrypt.hash(password, securityConfig.bcryptRounds);
   },
 
   /**
