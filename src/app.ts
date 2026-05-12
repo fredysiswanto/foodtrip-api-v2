@@ -4,6 +4,7 @@ import cors from 'cors';
 import rateLimit from 'express-rate-limit';
 import { appConfig, securityConfig, rateLimitConfig } from '@config/index';
 import logger from '@shared/utils/logger';
+import { createAuthRoutes } from '@modules/auth/routes/authRoutes';
 
 interface AppError extends Error {
   statusCode?: number;
@@ -86,6 +87,11 @@ function createApp(): Express {
       docs: 'https://github.com/foodtrip-api/v2.1-docs',
     });
   });
+
+  // ============================================
+  // API Routes (Phase 4+)
+  // ============================================
+  app.use('/api/v1/auth', createAuthRoutes());
 
   // ============================================
   // 404 Handler
