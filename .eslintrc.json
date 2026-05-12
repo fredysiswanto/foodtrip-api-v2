@@ -27,5 +27,14 @@
         "code": 120
       }
     ]
-  }
+  },
+  "overrides": [
+    {
+      "files": ["migrations/*.js"],
+      "parserOptions": {
+        "project": null,
+        "sourceType": "commonjs"
+      }
+    }
+  ]
 }
