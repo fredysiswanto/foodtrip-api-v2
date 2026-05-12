@@ -4,6 +4,7 @@ import cors from 'cors';
 import rateLimit from 'express-rate-limit';
 import { appConfig, securityConfig, rateLimitConfig } from '@config/index';
 import logger from '@shared/utils/logger';
+import { initializeSequelize } from '@db/sequelize';
 import { createAuthRoutes } from '@modules/auth/routes/authRoutes';
 
 interface AppError extends Error {
@@ -134,6 +135,9 @@ export default createApp;
 // Server Startup (only when file is run directly)
 // ============================================
 if (require.main === module) {
+  // Initialize Sequelize before creating app
+  initializeSequelize();
+
   const app = createApp();
 
   app.listen(appConfig.port, () => {

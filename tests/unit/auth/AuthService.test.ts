@@ -12,7 +12,6 @@ import {
   ValidationError,
   NotFoundError,
 } from '../../../src/shared/errors';
-import { jwtHelper } from '../../../src/shared/utils/jwt';
 import { bcryptHelper } from '../../../src/shared/utils/bcrypt';
 
 describe('AuthService - Unit Tests', () => {
@@ -68,7 +67,7 @@ describe('AuthService - Unit Tests', () => {
       };
 
       mockSequelize.transaction.mockResolvedValue(mockTransaction as any);
-      mockSequelize.query.mockResolvedValue([{ id: 'role-customer' }]);
+      mockSequelize.query.mockResolvedValue([{ id: 'role-customer' }] as any);
       mockRepository.findUserByEmail.mockResolvedValue(null);
       mockRepository.phoneExists.mockResolvedValue(false);
       mockRepository.createUser.mockResolvedValue(mockUser as any);

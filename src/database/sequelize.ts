@@ -64,6 +64,13 @@ export function getSequelize(): Sequelize {
 }
 
 /**
+ * Set Sequelize instance (for testing purposes)
+ */
+export function setSequelize(instance: Sequelize | null): void {
+  sequelize = instance;
+}
+
+/**
  * Test database connection
  */
 export async function testConnection(): Promise<boolean> {

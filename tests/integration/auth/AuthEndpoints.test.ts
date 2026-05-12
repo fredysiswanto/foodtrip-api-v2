@@ -8,12 +8,15 @@ import { Sequelize } from 'sequelize';
 import express from 'express';
 import { createAuthRoutes } from '../../../src/modules/auth/routes/authRoutes';
 import { Role, User, RefreshToken, initializeModels } from '../../../src/database/models';
+import { setSequelize } from '../../../src/database/sequelize';
 import { bcryptHelper } from '../../../src/shared/utils/bcrypt';
 
 describe('Auth Endpoints - Integration Tests', () => {
   let app: express.Application;
   let sequelize: Sequelize;
+  // @ts-ignore - declared but not directly used in tests
   let customerRoleId: string;
+  // @ts-ignore - declared but not directly used in tests
   let testUser: any;
 
   beforeAll(async () => {
@@ -23,6 +26,9 @@ describe('Auth Endpoints - Integration Tests', () => {
       storage: ':memory:',
       logging: false,
     });
+
+    // Set the global Sequelize instance for the app to use
+    setSequelize(sequelize);
 
     // Initialize models
     initializeModels(sequelize);
@@ -56,6 +62,7 @@ describe('Auth Endpoints - Integration Tests', () => {
 
   afterAll(async () => {
     await sequelize.close();
+    setSequelize(null);
   });
 
   describe('POST /auth/register', () => {
