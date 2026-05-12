@@ -57,6 +57,8 @@ Complete phased roadmap incorporating all v2.1 improvements. Organized by phase 
 
 # Phase 2: Database & ORM Setup
 
+**📖 For detailed Phase 2 breakdown with migration examples and schema guide, see [PHASE-2-OVERVIEW.MD](./PHASE-2-OVERVIEW.MD)**
+
 ## 2.1 Sequelize Configuration
 
 - [ ] Initialize Sequelize CLI

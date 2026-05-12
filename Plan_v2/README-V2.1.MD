@@ -217,14 +217,42 @@ Comprehensive refined plan incorporating all feedback from the initial review. T
 
 ---
 
+## 7. PHASE-2-OVERVIEW.MD — NEW
+
+**Purpose:** Detailed breakdown of Phase 2 with Sequelize and migration guidance
+
+**Contents:**
+
+- Phase objectives and success criteria
+- 5 task categories with step-by-step instructions
+- Sequelize configuration examples (SQLite, MySQL, production)
+- Complete migration templates and ordering strategy
+- All 15 database tables with DDL
+- Index strategy for query performance
+- Seeding infrastructure with sample data
+- Testing and validation approach
+- Risk analysis and mitigation
+
+**Key Sections:**
+
+- ✅ Sequelize configuration (2.1)
+- ✅ Migrations infrastructure (2.2)
+- ✅ Database schema - 15 tables (2.3)
+- ✅ Performance indexes (2.4)
+- ✅ Seeding infrastructure (2.5)
+
+---
+
 # Document Dependencies
 
 ```
 DATABASE_DESIGN-V2.1.MD
     ↓
-PHASE-1-OVERVIEW.MD
+PHASE-1-OVERVIEW.MD (Project Setup)
     ↓
-IMPLEMENTATION-CHECKLIST.MD (Phase 2 onwards)
+PHASE-2-OVERVIEW.MD (Database & ORM)
+    ↓
+IMPLEMENTATION-CHECKLIST.MD (Phase 3 onwards)
     ↓
 STOCK-MANAGEMENT-STRATEGY.MD (Phase 8)
     ↓
