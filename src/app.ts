@@ -6,6 +6,7 @@ import { appConfig, securityConfig, rateLimitConfig } from '@config/index';
 import logger from '@shared/utils/logger';
 import { initializeSequelize } from '@db/sequelize';
 import { createAuthRoutes } from '@modules/auth/routes/authRoutes';
+import { createRestaurantRoutes } from '@modules/restaurants/routes/restaurantRoutes';
 
 interface AppError extends Error {
   statusCode?: number;
@@ -93,6 +94,7 @@ function createApp(): Express {
   // API Routes (Phase 4+)
   // ============================================
   app.use('/api/v1/auth', createAuthRoutes());
+  app.use('/api/v1/restaurants', createRestaurantRoutes());
 
   // ============================================
   // 404 Handler
